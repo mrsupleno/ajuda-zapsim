@@ -1,0 +1,99 @@
+---
+title: Campanhas e Disparo em Massa
+description:Configure campanhas e disparos de mensagens em massa
+---
+
+# Campanhas e Disparo em Massa
+
+## Diferença entre Campanha e Disparo em Massa
+
+| Característica | Campanha | Disparo em Massa |
+|----------------|----------|------------------|
+| **Intervalo** | Fixo (definido pelo usuário) | Aleatório |
+| **Variação de mensagens** | Até 3 mensagens aleatórias | 1 mensagem por vez |
+| **Templates WABA** | ✅ Suportado | ✅ Suportado |
+| **Agendamento** | ✅ Data/hora específica | ✅ Imediato |
+| **Envio** | Dias úteis + horário comercial | Configurável |
+
+## Gestão de Campanha
+
+**Acessar:** Menu lateral → ícone Campanha
+
+### Criar Campanha
+
+| Campo | Descrição |
+|-------|-----------|
+| **Nome da Campanha** | Identificação interna (visível só para admins) |
+| **Data/Hora Início** | Quando a campanha começa a disparar |
+| **Enviar por** | Canal/conexão responsável pelo envio |
+| **Delay** | Tempo em **segundos** entre cada envio |
+| **Mídia** | Arquivo opcional anexado às mensagens |
+| **1ª, 2ª e 3ª Mensagem** | Variações — sistema envia **uma aleatoriamente** por contato |
+
+> ⚠️ Apenas **uma** das mensagens é enviada por contato (aleatório). Envios acontecem em **dias úteis + horário comercial**.
+
+### Adicionar Contatos à Campanha
+
+- Filtros disponíveis: período de criação, estado, etiquetas, carteira, nome/telefone
+- Seleção manual na lista gerada
+
+### Status da Campanha
+
+| Status | Descrição |
+|--------|-----------|
+| `Pendente` | Criada, aguardando programação |
+| `Programado` | Programada, aguardando início |
+| `Em andamento` | Disparo em execução |
+| `Finalizada` | Todos os envios concluídos |
+
+### Relatórios
+
+Download completo com métricas de envio, entrega, leitura.
+
+## Disparo em Massa
+
+**Acessar:** Menu lateral → ícone Disparo em Massa
+
+- Disparo imediato com intervalo **aleatório** entre mensagens
+- Opções:
+  - **API Não Oficial (Baileys/WebJS)** — mensagem livre com ou sem variáveis
+  - **API Oficial (WABA)** — templates pré-aprovados pela Meta
+
+## Variáveis nas Mensagens
+
+| Variável | Descrição |
+|----------|-----------|
+| `{{nome}}` | Nome do contato |
+| `{{numero}}` | Número do contato |
+| `{{data}}` | Data atual |
+
+## Templates WABA
+
+Para usar templates na campanha:
+
+1. Criar template na Meta Business Manager
+2. Aprovar template na Meta
+3. Selecionar template ao criar campanha
+4. Definir parâmetros do template
+
+## Cuidados Importantes
+
+- ⚠️ Disparos apenas em dias úteis e horário comercial (exceto mensagem de aniversário)
+- ⚠️ Delay é em **segundos**, não minutos
+- ⚠️ Sistema envia apenas **uma** das mensagens configuradas por contato (aleatório)
+- ⚠️ Para intervalo aleatório → usar **Disparo em Massa**, não Campanha
+- ⚠️ Use WABA para disparos seguros em massa
+
+## Comparativo: WABA vs Baileys para Massa
+
+| | Baileys | WABA (Oficial) |
+|---|---------|----------------|
+| Risco de banimento | Alto | Baixo |
+| Necessita celular | Sim | Não |
+| Templates | Não | Sim |
+| Custo | Grátis | Por mensagem |
+
+## Próximos Passos
+
+- [Filas e Organização](/operacoes/filas) — Organize atendimento
+- [Referência Rápida](/referencia/referencia-rapida) — Endpoints principais

@@ -1,0 +1,93 @@
+---
+title: Filas e Organização
+description:Organize atendimentos por filas e departamentos
+---
+
+# Filas e Organização de Atendimento
+
+## O que são Filas?
+
+Filas organizam atendimentos por setor/departamento (ex: Suporte, Vendas, Financeiro).
+
+**Acessar:** Menu lateral → ícone Filas (disponível para Admin e Supervisor)
+
+## Criar Fila
+
+1. Filas → Adicionar
+2. Informar nome do setor/departamento
+3. Salvar
+
+## Usar Filas
+
+- Associar fila padrão a um canal (ao criar/editar canal)
+- Mover ticket para fila via chatbot (interação "Adicionar ao Chatbot") ou manualmente
+- Via API: `POST /v2/api/external/{ApiID}/updatequeue`
+
+## Auto Distribuição
+
+Quando ativado no canal, novos tickets sem atendente definido são distribuídos automaticamente entre agentes **online** de forma equitativa.
+
+### Configurar Auto Distribuição
+
+1. Editar canal
+2. Ativar opção "Auto distribuir"
+3. Definir filas participantes da distribuição
+
+## Estrutura de Filas
+
+```
+📁 Filas
+├── 🟢 Suporte (3 agentes online)
+├── 🔵 Vendas (2 agentes online)
+├── 🟡 Financeiro (1 agente online)
+└── ⚫ Comercial (0 agentes online)
+```
+
+## Status dos Tickets
+
+| Status | Descrição |
+|--------|-----------|
+| `open` | Em atendimento |
+| `pending` | Aguardando resposta do cliente |
+| `closed` | Encerrado |
+
+## Kanban (Oportunidades)
+
+Além das filas de atendimento, o sistema possui um Kanban para gestão de oportunidades de venda:
+
+| Estágio | Cor | Descrição |
+|---------|-----|-----------|
+| Novo Lead | 🟢 | Lead recém-criado |
+| Qualificação | 🔵 | Em qualificação |
+| Proposta | 🟡 | Proposta enviada |
+| Negociação | 🟠 | Em negociação |
+| Fechado Ganho | ✅ | Venda concluída |
+| Fechado Perdido | ❌ | Oportunidade perdida |
+
+## Tags
+
+Tags são etiquetas que podem ser aplicadas a contatos ou tickets para organização adicional.
+
+### Criar Tag
+
+1. Menu → Tags → Adicionar
+2. Informar nome e cor
+3. Salvar
+
+### Usar Tags
+
+- Filtrar tickets por tag
+- Filtrar contatos por tag
+- Automatizar com chatbot (adicionar tag automaticamente)
+
+## Boas Práticas
+
+1. **Nomeie claramente:** Use nomes descritivos (ex: "Suporte Nível 1", "Vendas SP")
+2. **Distribua agentes:** Garanta que cada fila tenha agentes designados
+3. **Use auto-distribuição:** Para fluxos de entrada uniformes
+4. **Tags para detalhes:** Use tags para categorização adicional além das filas
+
+## Próximos Passos
+
+- [Dicas e Erros Comuns](/referencia/dicas-erros) — Resolva problemas
+- [Referência Rápida](/referencia/referencia-rapida) — Endpoints principais

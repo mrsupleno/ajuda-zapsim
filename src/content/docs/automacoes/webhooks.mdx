@@ -1,0 +1,111 @@
+---
+title: Webhooks
+description:Configure webhooks para receber notificações em tempo real
+---
+
+# Webhooks
+
+## Habilitar Webhooks
+
+**Painel Admin → Configurações → Integrações → Habilitar Webhooks**
+
+### Eventos Disponíveis
+
+| Evento | Descrição |
+|--------|-----------|
+| **Ativar Webhook** | Liga o sistema de webhooks. Requer URL de destino |
+| **Receber mensagens e atendimentos** | Dispara ao receber/enviar mensagens e ao abrir/fechar tickets |
+| **Criar canal/conexão** | Dispara ao criar novo canal |
+| **Atualizar canal/conexão** | Dispara ao atualizar canal |
+| **Criar usuário** | Dispara ao criar novo usuário |
+| **Atualizar usuário** | Dispara ao atualizar usuário |
+| **Criar API** | Dispara ao criar nova API key |
+| **Atualizar API** | Dispara ao atualizar API key |
+| **Renovar token da API** | Dispara ao renovar token |
+
+## Payload de Webhook — Mensagem Recebida
+
+```json
+{
+  "event": "onmessage",
+  "instanceName": "canal-principal",
+  "data": {
+    "ticket": {
+      "id": 456,
+      "status": "open",
+      "queueId": 1
+    },
+    "contact": {
+      "id": 123,
+      "name": "João Silva",
+      "number": "5511999999999"
+    },
+    "message": {
+      "body": "Olá, preciso de ajuda",
+      "mediaType": "chat",
+      "timestamp": 1741590000
+    }
+  }
+}
+```
+
+## Webhook dentro do Chatbot Nativo
+
+Na interação "Adicionar Webhook" de uma etapa do fluxo:
+
+| Campo | Descrição |
+|-------|-----------|
+| **Método** | GET, POST, PUT ou DELETE |
+| **URL** | Endpoint externo (N8N, Make, Zapier, etc) |
+| **Headers** | Personalizados (Authorization, Content-Type, etc) |
+| **Body** | JSON com variáveis do fluxo |
+| **Retentativas** | Configurável |
+
+### Exemplo de Body com Variáveis
+
+```json
+{
+  "contact": "{{contact.name}}",
+  "message": "{{message.body}}",
+  "ticketId": "{{ticket.id}}"
+}
+```
+
+## Configurar URL de Destino
+
+1. Painel Admin → Configurações → Integrações
+2. Habilitar Webhook
+3. Preencher URL do endpoint (ex: `https://seu-sistema.com/webhook`)
+4. Opcional: Token de verificação/segurança
+
+## Headers Típicos
+
+```http
+Content-Type: application/json
+Authorization: Bearer seu-token-aqui
+X-Webhook-Secret: sua-chave-secreta
+```
+
+## Boas Práticas
+
+1. **Responda rapidamente:** Retorne 200 OK imediatamente, processe em background
+2. **Verifique autenticidade:** Use o token/secret para validar requests
+3. **Trate erros:** Implemente retry logic no seu endpoint
+4. **Logs:** Mantenha logs de todos os webhooks recebidos
+
+## Retry (Retentativas)
+
+Se seu endpoint retornar erro, o sistema tentará novamente:
+
+| Tentativa | Tempo após falha |
+|-----------|------------------|
+| 1ª | 1 minuto |
+| 2ª | 5 minutos |
+| 3ª | 30 minutos |
+| 4ª | 2 horas |
+| 5ª | 24 horas |
+
+## Próximos Passos
+
+- [Campanhas](/operacoes/campanhas) — Disparos em massa
+- [Filas e Organização](/operacoes/filas) — Organize atendimentos

@@ -1,0 +1,145 @@
+---
+title: API — Contatos
+description:Gerenciar contatos no ZapSim via API
+---
+
+# API — Contatos
+
+## Criar Contato
+
+```
+POST /v2/api/external/{ApiID}/createContact
+```
+
+**Body JSON:**
+
+```json
+{
+  "name": "João Silva",
+  "number": "5511999999999",
+  "email": "joao@email.com"
+}
+```
+
+## Buscar Contato
+
+```
+POST /v2/api/external/{ApiID}/showcontact
+```
+
+**Body JSON:**
+
+```json
+{
+  "number": "5511999999999"
+}
+```
+
+> Também aceita `contactId` em vez de `number`.
+
+## Atualizar Contato
+
+```
+POST /v2/api/external/{ApiID}/updateContact
+```
+
+**Body JSON:**
+
+```json
+{
+  "contactId": 123,
+  "name": "João Silva Atualizado",
+  "email": "novo@email.com"
+}
+```
+
+## Bloquear Contato
+
+```
+POST /v2/api/external/{ApiID}/blockContact
+```
+
+**Body JSON:**
+
+```json
+{
+  "contactId": 123
+}
+```
+
+## Buscar Contatos
+
+```
+POST /v2/api/external/{ApiID}/contacts/search
+```
+
+**Body JSON:**
+
+```json
+{
+  "searchParam": "João",
+  "pageNumber": 1
+}
+```
+
+## Atualizar Carteira do Contato
+
+```
+POST /v2/api/external/{ApiID}/updateContactWallet
+```
+
+**Body JSON:**
+
+```json
+{
+  "contactId": 123,
+  "walletId": 5
+}
+```
+
+## Buscar Informações Extras do Contato
+
+```
+GET /v2/api/external/{ApiID}/getContactExtraInfo?contactId=123
+```
+
+## Atualizar Informações Extras
+
+```
+POST /v2/api/external/{ApiID}/updateContactExtraInfo
+```
+
+**Body JSON:**
+
+```json
+{
+  "contactId": 123,
+  "extraInfo": {
+    "campo_customizado": "valor",
+    "empresa": "Nome da Empresa",
+    "cargo": "Gerente de Vendas"
+  }
+}
+```
+
+## Campos Extras Personalizados
+
+Você pode adicionar campos personalizados aos contatos. Exemplos:
+
+| Campo | Descrição |
+|-------|-----------|
+| `empresa` | Nome da empresa |
+| `cargo` | Cargo/função |
+| `segmento` | Segmento de mercado |
+| `receita_anual` | Receita anual |
+
+## Boas Práticas
+
+1. Ao receber uma mensagem, buscar contato existente antes de criar novo
+2. Usar `showcontact` para verificar se o contato já existe
+3. Manter o número sempre no formato DDI + DDD + número (ex: `5511999999999`)
+
+## Próximos Passos
+
+- [Usuários](/api/usuarios) — Gerenciar usuários/operadores
+- [Listagens](/api/listagens) — Listar recursos

@@ -1,0 +1,52 @@
+/* Customização ZapSim - Cor principal: #2D8659 */
+:root {
+  --sl-color-accent-low: #1a3d32;
+  --sl-color-accent: #2D8659;
+  --sl-color-accent-high: #4ade80;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f8fafc;
+  --sl-color-gray-2: #e2e8f0;
+  --sl-color-gray-3: #94a3b8;
+  --sl-color-gray-4: #475569;
+  --sl-color-gray-5: #1e293b;
+  --sl-color-gray-6: #0f172a;
+  --sl-color-black: #000000;
+}
+
+/* Sidebar highlight */
+.sl-nav-group a[aria-current="page"] {
+  background-color: rgba(45, 134, 89, 0.15);
+  border-left-color: var(--sl-color-accent);
+}
+
+/* Code blocks */
+pre {
+  background-color: #1e293b !important;
+  border: 1px solid #334155;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+th {
+  background-color: #f8fafc;
+  font-weight: 600;
+}
+
+/* Links */
+a {
+  color: var(--sl-color-accent);
+}
+
+a:hover {
+  color: var(--sl-color-accent-high);
+}

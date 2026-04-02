@@ -1,0 +1,74 @@
+---
+title: API — Mensagens em Grupo
+description:Enviar mensagens para grupos de WhatsApp via API
+---
+
+# API — Mensagens em Grupo
+
+## Enviar Texto para Grupo
+
+```
+POST /v2/api/external/{ApiID}/group
+```
+
+**Body JSON:**
+
+```json
+{
+  "groupId": "XXXXXXXXXX@g.us",
+  "body": "Mensagem para o grupo"
+}
+```
+
+## Enviar Mídia para Grupo
+
+```
+POST /v2/api/external/{ApiID}/groupMediaUrl
+```
+
+**Body JSON:**
+
+```json
+{
+  "groupId": "XXXXXXXXXX@g.us",
+  "body": "Legenda da mídia",
+  "mediaUrl": "https://exemplo.com/imagem.jpg"
+}
+```
+
+## Como Obter o ID do Grupo
+
+O `groupId` segue o formato `XXXXXXXXXX@g.us`. Para obtê-lo:
+
+1. Liste os grupos do canal:
+```
+POST /v2/api/external/{ApiID}/listGroupInfo
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappId": 1
+}
+```
+
+2. Na resposta, cada grupo terá um campo `jid` ou `groupId` com o formato correto.
+
+## Exemplo Completo
+
+```http
+POST https://seu-backend.com/v2/api/external/abc123/group
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  "groupId": "123456789-987654321@g.us",
+  "body": "Olá! Esta é uma mensagem para o grupo."
+}
+```
+
+## Próximos Passos
+
+- [Templates WABA](/api/templates-waba) — Use templates oficiais
+- [WABA Interativo](/api/waba-interativo) — Botões e listas

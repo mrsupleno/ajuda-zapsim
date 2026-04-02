@@ -1,0 +1,75 @@
+---
+title: Primeiro Acesso
+description:Setup rápido para começar a usar o ZapSim
+---
+
+# Primeiro Acesso — Setup Rápido
+
+## Fluxo Completo de Onboarding
+
+### 1. Criar usuário Admin (no SuperAdmin)
+
+- SuperAdmin → Usuários → Adicionar
+- Perfil: `Administrador`
+- Salvar
+
+### 2. Fazer login como Admin
+
+- Sair do SuperAdmin
+- Login com credenciais do Admin criado
+
+### 3. Adicionar Canal
+
+- Canais → Adicionar Canal
+- Tipo: `WhatsApp Baileys (QR Code)` ou outro tipo disponível
+- Nome do canal
+- Salvar
+
+### 4. Conectar WhatsApp
+
+1. Clicar em "Novo QR Code"
+2. No celular: WhatsApp → Configurações → Aparelhos Conectados → Conectar Aparelho
+3. Escanear QR Code exibido na tela
+4. Status muda para "Conexão estabelecida"
+
+### 5. Testar
+
+- Menu → Atendimentos
+- Enviar mensagem de outro celular para o número conectado
+- Deve aparecer na caixa de atendimentos em poucos segundos
+
+## Tipos de Canal Disponíveis
+
+| Tipo | Descrição | Estabilidade |
+|------|-----------|--------------|
+| **Baileys (QR Code)** | Conexão via biblioteca Baileys, escanear QR | Boa, depende do smartphone |
+| **WebJS** | Conexão via WhatsApp Web JS | Similar ao Baileys |
+| **Meow** | Conexão alternativa | Variável |
+| **Evolution API** | Integração com Evolution API externa | Alta |
+| **Uazapi** | Integração com Uazapi | Alta |
+| **WhatsApp Oficial (WABA)** | API Cloud Meta, números certificados | Máxima |
+
+## Como Conectar — Baileys (QR Code)
+
+**Pré-requisitos:**
+- Remover conexão ativa no WhatsApp Web antes
+- Manter celular ligado, conectado à internet, app WhatsApp aberto
+- Desativar descanso de tela no celular
+- Recomendado: Chrome + Windows
+
+**Passos:**
+1. Painel Admin → Canais → Adicionar Canal
+2. Selecionar tipo: `Baileys`
+3. Preencher Nome do Canal
+4. Salvar → Clicar em "Novo QR Code"
+5. No celular: WhatsApp → Configurações → Aparelhos Conectados → Conectar Aparelho
+6. Escanear QR Code exibido na tela
+
+**Opção alternativa — Pairing Code:**
+- Informar número completo (DDI + DDD + número, sem caracteres especiais)
+- O código será enviado diretamente para o celular
+
+## Próximos Passos
+
+- [Autenticação API](/api/autenticacao) — Configure o acesso à API
+- [Enviar Mensagens](/api/mensagens) — Envie sua primeira mensagem via API

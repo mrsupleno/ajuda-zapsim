@@ -1,0 +1,119 @@
+---
+title: Chatbot Nativo
+description:Crie fluxos de conversa visuais no ZapSim
+---
+
+# Chatbot Nativo — Construtor de Fluxo
+
+## Conceitos Fundamentais
+
+| Elemento | Descrição |
+|----------|-----------|
+| **Fluxo** | Conjunto completo de etapas da automação |
+| **Etapa (Nó)** | Momento específico na conversa |
+| **Interação (Ação)** | O que o chatbot faz nessa etapa |
+| **Condição (Regra)** | O que determina para qual etapa avançar |
+
+## Interações Disponíveis
+
+### Comunicação com o Cliente
+
+| Interação | Descrição |
+|-----------|-----------|
+| **Enviar Mensagem de Texto** | Uma ou mais mensagens sequenciais |
+| **Enviar Mídia** | Documento, imagem ou arquivo |
+| **Agendar Mensagem** | Envio futuro (30 min, próximo dia, data personalizada) |
+| **Enviar SMS** | Via Comtele, Connecta ou outras integrações SMS |
+| **Chamar VAPI** | Chamada de voz automatizada com IA |
+
+### Controle do Fluxo
+
+| Interação | Descrição |
+|-----------|-----------|
+| **Delay** | Pausa em segundos entre mensagens |
+| **Adicionar Novo Fluxo** | Transfere para outro fluxo |
+| **Bloquear Chatbot** | Impede reativação do bot para aquele contato |
+
+### Gestão de Dados
+
+| Interação | Descrição |
+|-----------|-----------|
+| **Adicionar Tag** | Aplica etiqueta ao contato |
+| **Adicionar Kanban** | Move/cria card no funil |
+| **Adicionar Oportunidade** | Cria oportunidade no CRM |
+| **Adicionar Nota** | Nota interna no atendimento |
+| **Adicionar Demanda/Razão** | Associa motivo ao contato |
+
+### Integrações Externas
+
+| Interação | Descrição |
+|-----------|-----------|
+| **Adicionar Webhook** | Envia dados para URL externa (GET/POST/PUT/DELETE) |
+| **Chamar Typebot** | Transfere para fluxo Typebot |
+| **Chamar ChatGPT (ou IA)** | Aciona modelo de IA |
+| **Criar Evento no Google Agenda** | Agenda evento |
+
+> ⚠️ **Regra importante:** Interações que transferem controle (Typebot, ChatGPT, Bloquear Chatbot) devem ser **sempre a última** de uma etapa.
+
+## Condições (Regras de Roteamento)
+
+| Condição | Comportamento |
+|----------|---------------|
+| **Qualquer Resposta** | Avança com qualquer mensagem do cliente |
+| **Igual a** | Resposta idêntica à palavra-chave (vírgula = "OU") |
+| **Contém** | Resposta contém a palavra-chave |
+| **Começa com** | Resposta começa com o texto |
+| **Termina com** | Resposta termina com o texto |
+| **Regex** | Valida com expressão regular (prioridade máxima) |
+
+## Variáveis
+
+### Capturar Variável
+
+Em cada etapa, habilitar "Capturar Variável" e dar um nome (ex: `nome_cliente`). A resposta do cliente nesse passo é salva na variável.
+
+### Usar Variável em Mensagens
+
+```
+Olá, {{nome_cliente}}! Seu pedido foi confirmado.
+```
+
+> ⚠️ **Limitação importante:** Só é possível usar a variável capturada na **etapa imediatamente anterior**. Não há acumulação de variáveis ao longo do fluxo.
+
+### Variáveis de Sistema Disponíveis
+
+| Variável | Descrição |
+|----------|-----------|
+| `{{contact.name}}` | Primeiro nome do contato |
+| `{{agent.name}}` | Nome do atendente que assumiu |
+| `{{ticket.protocol}}` | Número do protocolo de atendimento |
+
+## Configurações Gerais do Fluxo
+
+| Configuração | Descrição |
+|--------------|-----------|
+| **Mensagem de Transferência** | Mensagem quando bot transfere para humano |
+| **Mensagem de Fallback** | Resposta quando nenhuma condição é atendida |
+| **Palavra-Gatilho** | Palavra que reinicia o fluxo a qualquer momento |
+| **Timeout (Sem Resposta)** | Ação se cliente não responder no tempo definido |
+| **Horário de Atendimento** | Comportamento fora do horário comercial |
+
+## Ativar o Fluxo em um Canal
+
+1. Menu → Canais
+2. Localizar o canal desejado
+3. Clicar no ícone de Chatbot
+4. Selecionar o fluxo na lista
+5. Toda nova conversa será gerenciada pelo fluxo
+
+## Armadilhas Comuns
+
+- Variáveis só disponíveis da etapa **imediatamente anterior** (não acumulam)
+- Interações que passam controle (Typebot, ChatGPT) devem ser **última da etapa**
+- Regex tem **prioridade** sobre todas as outras condições
+- Fluxo não ativa até ser vinculado a um canal
+
+## Próximos Passos
+
+- [Integração N8N](/automacoes/n8n) — Automatize com fluxos complexos
+- [Integração IA](/automacoes/ia) — Adicione inteligência artificial

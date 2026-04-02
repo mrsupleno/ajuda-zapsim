@@ -1,0 +1,95 @@
+---
+title: API — Templates WABA
+description:Enviar templates oficiais do WhatsApp Business API
+---
+
+# API — Templates WABA
+
+> ⚠️ **Apenas para canais WhatsApp Oficial (WABA).** Templates precisam ser aprovados pela Meta.
+
+## Enviar Template Simples
+
+```
+POST /v2/api/external/{ApiID}/template
+```
+
+## Enviar Template com Body
+
+```
+POST /v2/api/external/{ApiID}/templateBody
+```
+
+**Body JSON (exemplo):**
+
+```json
+{
+  "number": "5511999999999",
+  "templateName": "confirmacao_pedido",
+  "language": "pt_BR",
+  "components": [
+    {
+      "type": "body",
+      "parameters": [
+        { "type": "text", "text": "João Silva" },
+        { "type": "text", "text": "Pedido #1234" }
+      ]
+    }
+  ]
+}
+```
+
+## Enviar Template de Marketing
+
+```
+POST /v2/api/external/{ApiID}/templateMarketingBody
+```
+
+## Parâmetros de Template
+
+| Parâmetro | Descrição |
+|-----------|-----------|
+| `number` | Número do destinatário (formato: `5511999999999`) |
+| `templateName` | Nome do templateapproved na Meta |
+| `language` | Idioma do template (ex: `pt_BR`, `en_US`) |
+| `components` | Array de componentes do template |
+
+## Componentes Disponíveis
+
+| Tipo | Descrição |
+|------|-----------|
+| `body` | Corpo do template com variáveis |
+| `header` | Cabeçalho (texto ou mídia) |
+| `footer` | Rodapé com texto fixo |
+| `buttons` | Botões de ação |
+
+## Exemplo Completo
+
+```http
+POST https://seu-backend.com/v2/api/external/abc123/templateBody
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  "number": "5511999999999",
+  "templateName": "saudacao_cliente",
+  "language": "pt_BR",
+  "components": [
+    {
+      "type": "body",
+      "parameters": [
+        { "type": "text", "text": "Maria" }
+      ]
+    },
+    {
+      "type": "footer",
+      "parameters": [
+        { "type": "text", "text": "Att, Equipe ZapSim" }
+      ]
+    }
+  ]
+}
+```
+
+## Próximos Passos
+
+- [WABA Interativo](/api/waba-interativo) — Botões e listas interativas

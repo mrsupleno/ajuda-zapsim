@@ -1,0 +1,160 @@
+---
+title: Referência Rápida
+description:Endpoints mais usados da API ZapSim
+---
+
+# Referência Rápida — Endpoints Mais Usados
+
+## Autenticação
+
+Todas as requisições precisam do header:
+```http
+Authorization: Bearer {seu_token}
+```
+
+## Mensagens
+
+```http
+# Enviar mensagem de texto
+POST /v2/api/external/{ApiID}
+Body: { "number": "55...", "body": "texto" }
+
+# Enviar arquivo
+POST /v2/api/external/{ApiID}/url
+Body: { "number": "55...", "body": "texto", "mediaUrl": "https://...", "fileName": "arquivo.pdf" }
+
+# Enviar para grupo
+POST /v2/api/external/{ApiID}/group
+Body: { "groupId": "XXXXXXXXXX@g.us", "body": "texto" }
+```
+
+## Tickets
+
+```http
+# Criar ticket
+POST /v2/api/external/{ApiID}/createTicket
+Body: { "contactId": N, "queueId": N }
+
+# Fechar ticket
+POST /v2/api/external/{ApiID}/updateticketinfo
+Body: { "ticketId": N, "status": "closed" }
+
+# Buscar ticket
+POST /v2/api/external/{ApiID}/showticket
+Body: { "ticketId": N }
+
+# Listar tickets abertos
+GET /v2/api/external/{ApiID}/listTickets?status=open&pageNumber=1
+
+# Enviar presença (digitando)
+POST /v2/api/external/{ApiID}/sendPresence
+Body: { "ticketId": N, "type": "composing" }
+```
+
+## Contatos
+
+```http
+# Buscar contato
+POST /v2/api/external/{ApiID}/showcontact
+Body: { "number": "55..." }
+
+# Criar contato
+POST /v2/api/external/{ApiID}/createContact
+Body: { "name": "Nome", "number": "55...", "email": "email@.com" }
+
+# Atualizar contato
+POST /v2/api/external/{ApiID}/updateContact
+Body: { "contactId": N, "name": "Novo Nome" }
+
+# Listar contatos
+GET /v2/api/external/{ApiID}/listContacts?pageNumber=1
+```
+
+## Canais e Sessões
+
+```http
+# Listar canais
+GET /v2/api/external/{ApiID}/listChannels
+
+# Status do canal
+POST /v2/api/external/{ApiID}/showChannelById
+Body: { "whatsappId": N }
+
+# QR Code
+POST /v2/api/external/{ApiID}/qrCodeSession
+Body: { "whatsappId": N }
+```
+
+## Filas e Listagens
+
+```http
+# Listar filas
+GET /v2/api/external/{ApiID}/listQueues
+
+# Listar usuários
+GET /v2/api/external/{ApiID}/listUsers?pageNumber=1
+
+# Listar tags
+GET /v2/api/external/{ApiID}/listTags?isActive=true
+
+# Listar sessões
+GET /v2/api/external/{ApiID}/listSessions
+```
+
+## Templates WABA
+
+```http
+# Enviar template
+POST /v2/api/external/{ApiID}/templateBody
+Body: {
+  "number": "55...",
+  "templateName": "nome_template",
+  "language": "pt_BR",
+  "components": [...]
+}
+
+# Enviar botões
+POST /v2/api/external/{ApiID}/sendButtonWABA
+Body: {
+  "number": "55...",
+  "title": "Título",
+  "body": "Mensagem",
+  "buttons": [...]
+}
+```
+
+## Usuários
+
+```http
+# Criar usuário
+POST /v2/api/external/{ApiID}/createUser
+Body: { "name": "Nome", "email": "email@", "password": "senha", "profile": "user" }
+
+# Listar usuários
+GET /v2/api/external/{ApiID}/listUsers?pageNumber=1
+
+# Status do usuário
+GET /v2/api/external/{ApiID}/getUserStatus?userId=N
+```
+
+## Oportunidades
+
+```http
+# Criar oportunidade
+POST /v2/api/external/{ApiID}/createOpportunity
+Body: { "contactId": N, "title": "Título", "value": 500, "pipelineId": 1, "stageId": 2 }
+
+# Listar oportunidades
+GET /v2/api/external/{ApiID}/listOpportunities?page=1&status=open
+```
+
+## Formato de Número
+
+Sempre use: `DDI + DDD + número`
+
+Exemplo: `5511999999999` (Brasil, DDI=55, DDD=11, número=999999999)
+
+## Precisa de Ajuda?
+
+- **Suporte:** [suporte@zapsim.com](mailto:suporte@zapsim.com)
+- **Site:** [zapsim.app](https://zapsim.app)

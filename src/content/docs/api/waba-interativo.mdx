@@ -1,0 +1,90 @@
+---
+title: API — WABA Interativo
+description:Enviar botões e listas interativas via WhatsApp Business API
+---
+
+# API — WABA Interativo
+
+> ⚠️ **Apenas para canais WhatsApp Oficial (WABA).**
+
+## Enviar Botões
+
+```
+POST /v2/api/external/{ApiID}/sendButtonWABA
+```
+
+**Body JSON (exemplo):**
+
+```json
+{
+  "number": "5511999999999",
+  "title": "Escolha uma opção:",
+  "body": "Como posso ajudar?",
+  "buttons": [
+    { "id": "btn1", "title": "Suporte" },
+    { "id": "btn2", "title": "Vendas" },
+    { "id": "btn3", "title": "Financeiro" }
+  ]
+}
+```
+
+> **Máximo de 3 botões.**
+
+## Enviar Lista
+
+```
+POST /v2/api/external/{ApiID}/sendListWABA
+```
+
+**Body JSON (exemplo):**
+
+```json
+{
+  "number": "5511999999999",
+  "title": "Nossos Serviços",
+  "body": "Selecione uma opção:",
+  "buttonText": "Ver opções",
+  "sections": [
+    {
+      "title": "Serviços",
+      "rows": [
+        { "id": "s1", "title": "Suporte Técnico", "description": "Problemas com o sistema" },
+        { "id": "s2", "title": "Comercial", "description": "Planos e preços" }
+      ]
+    }
+  ]
+}
+```
+
+> **Máximo de 10 opções por seção.**
+
+## Comparativo: Botões vs Listas
+
+| Característica | Botões | Listas |
+|----------------|--------|--------|
+| Máximo de itens | 3 | 10 |
+| Visual | Botões horizontais | Lista suspensa |
+| Uso recomendado | Ações rápidas | Muitas opções |
+
+## Exemplo Completo
+
+```http
+POST https://seu-backend.com/v2/api/external/abc123/sendButtonWABA
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  "number": "5511999999999",
+  "title": "Menu Principal",
+  "body": "Selecione uma das opções abaixo:",
+  "buttons": [
+    { "id": "btn1", "title": "Falar com Atendente" },
+    { "id": "btn2", "title": "Ver Produtos" },
+    { "id": "btn3", "title": "Horário de Funcionamento" }
+  ]
+}
+```
+
+## Próximos Passos
+
+- [Tickets](/api/tickets) — Gerencie atendimentos

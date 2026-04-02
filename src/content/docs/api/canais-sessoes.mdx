@@ -1,0 +1,148 @@
+---
+title: API — Canais e Sessões
+description:Gerenciar canais e sessões WhatsApp via API
+---
+
+# API — Canais e Sessões
+
+## Informações do Canal (por nome/número)
+
+```
+POST /v2/api/external/{ApiID}/showChannel
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappName": "WhatsApp Principal"
+}
+```
+
+## Informações do Canal (por ID)
+
+```
+POST /v2/api/external/{ApiID}/showChannelById
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappId": 1
+}
+```
+
+## Listar Grupos do Canal
+
+```
+POST /v2/api/external/{ApiID}/listGroupInfo
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappId": 1
+}
+```
+
+## Criar Sessão
+
+```
+POST /v2/api/external/{ApiID}/createtSession
+```
+
+**Body JSON:**
+
+```json
+{
+  "name": "Novo Canal",
+  "type": "baileys"
+}
+```
+
+**Tipos disponíveis:**
+
+| Tipo | Descrição |
+|------|-----------|
+| `baileys` | QR Code padrão |
+| `webjs` | WhatsApp Web JS |
+| `meow` | Conexão alternativa |
+| `evolution` | Evolution API |
+| `waba` | WhatsApp Oficial |
+
+## Deletar Sessão
+
+```
+POST /v2/api/external/{ApiID}/deleteSession
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappId": 3
+}
+```
+
+## Iniciar Sessão
+
+```
+POST /v2/api/external/{ApiID}/startSession
+```
+
+## Obter QR Code
+
+```
+POST /v2/api/external/{ApiID}/qrCodeSession
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappId": 3
+}
+```
+
+**Resposta:**
+
+```json
+{
+  "qrcode": "data:image/png;base64,..."
+}
+```
+
+> Retorna o QR Code em base64 para conexão do WhatsApp.
+
+## Configurações do Canal
+
+| Opção | Descrição |
+|-------|-----------|
+| **ChatBot** | Vincular fluxo de chatbot padrão |
+| **Fila** | Fila padrão de atendimento |
+| **Usuário** | Atendente padrão |
+| **Avaliação automática** | Envia pesquisa de satisfação ao fechar ticket |
+| **Transcrição de áudio** | Converte áudios recebidos para texto |
+| **Auto distribuir** | Balanceia tickets entre agentes online |
+| **Destruição de mensagem** | Remove mensagens deletadas do banco |
+| **Mensagem de aniversário** | Envia parabéns automático na data de nascimento |
+| **Desligar IA ao abrir ticket** | Desativa ChatGPT/Typebot/N8N quando humano assume |
+| **Espera no processamento** | Evita conflito quando cliente manda várias msgs seguidas |
+| **Palavra de fechamento automático** | Palavra-chave que fecha o ticket automaticamente |
+| **Mensagem de despedida** | Mensagem padrão ao encerrar atendimento |
+
+## Status do Canal
+
+| Status | Significado |
+|--------|--------------|
+| `open` | Canal conectado e ativo |
+| `close` | Canal desconectado |
+| `qrcode` | QR Code disponível para conexão |
+| `connecting` | Tentando conectar |
+
+## Próximos Passos
+
+- [Conexão WhatsApp](/canais/conexao-whatsapp) — Guia completo
+- [API SuperAdmin](/api/superadmin) — Gerenciar múltiplos tenants

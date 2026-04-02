@@ -1,0 +1,56 @@
+---
+title: Autenticação e API
+description:Como autenticar na API REST do ZapSim
+---
+
+# Autenticação e API — Conceitos Base
+
+## Base URL
+
+```
+https://{seu_backend_zapsim}/v2/api/external/{ApiID}/
+```
+
+> Substitua `{seu_backend_zapsim}` pela URL do servidor ZapSim e `{ApiID}` pelo ID da API do tenant.
+
+## Autenticação — Bearer Token
+
+Todas as requisições exigem header:
+
+```http
+Authorization: Bearer {seu_token}
+```
+
+## Como obter o ApiID e Token
+
+1. Painel Admin → Configurações → API
+2. Copiar o **ApiID** e o **Bearer Token** gerados
+
+## Formato Padrão dos Endpoints
+
+- **Método:** `POST` (maioria) ou `GET` (listagens)
+- **Content-Type:** `application/json`
+- **Parâmetros:** no `body` (POST) ou `query string` (GET)
+
+## Exemplo Completo
+
+```http
+POST https://seu-backend.com/v2/api/external/abc123/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "number": "5511999999999",
+  "body": "Olá! Como posso ajudar?"
+}
+```
+
+## Erros de Autenticação
+
+- `401 Unauthorized` → Bearer Token inválido ou expirado. Renovar via painel Admin → API → Renovar Token
+- `404 Not Found` → ApiID incorreto ou rota errada
+- `ApiID não encontrado` → Verificar se está usando o ID correto (não é o ID do usuário)
+
+## Próximos Passos
+
+- [Enviar Mensagens](/api/mensagens) — Envie texto, arquivos, áudio

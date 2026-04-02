@@ -1,0 +1,107 @@
+---
+title: API — Listagens
+description:Listar tickets, contatos, canais e outros recursos
+---
+
+# API — Listagens
+
+## Listar Tickets
+
+```
+GET /v2/api/external/{ApiID}/listTickets
+```
+
+**Query params:**
+
+| Parâmetro | Descrição |
+|-----------|-----------|
+| `pageNumber` | Número da página |
+| `status` | `open`, `pending`, `closed` |
+| `searchParam` | Busca por texto |
+| `queuesIds` | IDs das filas separados por vírgula |
+| `whatsappIds` | IDs dos canais separados por vírgula |
+
+**Exemplo:**
+
+```
+GET /v2/api/external/{ApiID}/listTickets?status=open&pageNumber=1
+```
+
+## Listar Contatos
+
+```
+GET /v2/api/external/{ApiID}/listContacts?pageNumber=1&searchParam=João&tagId=3
+```
+
+**Query params:**
+
+| Parâmetro | Descrição |
+|-----------|-----------|
+| `pageNumber` | Número da página |
+| `searchParam` | Busca por nome/número |
+| `walletId` | Filtra por carteira |
+| `tagId` | Filtra por tag |
+
+## Listar Oportunidades
+
+```
+GET /v2/api/external/{ApiID}/listOpportunities?page=1&limit=20&status=open&pipelineId=1
+```
+
+## Listar Canais
+
+```
+GET /v2/api/external/{ApiID}/listChannels
+```
+
+## Listar Sessões
+
+```
+GET /v2/api/external/{ApiID}/listSessions
+```
+
+## Listar Filas
+
+```
+GET /v2/api/external/{ApiID}/listQueues
+```
+
+## Listar Tags
+
+```
+GET /v2/api/external/{ApiID}/listTags?isActive=true
+```
+
+## Listar Usuários
+
+```
+GET /v2/api/external/{ApiID}/listUsers?pageNumber=1&searchParam=Maria
+```
+
+## Paginação
+
+Todas as listagens usam paginação. Para navegar entre páginas:
+
+```http
+GET /v2/api/external/{ApiID}/listTickets?pageNumber=1&pageSize=20
+```
+
+**Parâmetros:**
+
+| Parâmetro | Padrão | Máximo |
+|-----------|--------|--------|
+| `pageNumber` | 1 | - |
+| `pageSize` | 20 | 100 |
+
+## Ordenação
+
+Algumas listagens suportam ordenação:
+
+```http
+GET /v2/api/external/{ApiID}/listTickets?orderBy=createdAt&orderDirection=DESC
+```
+
+## Próximos Passos
+
+- [Canais e Sessões](/api/canais-sessoes) — Gerenciar conexões
+- [API SuperAdmin](/api/superadmin) — Gerenciar tenants

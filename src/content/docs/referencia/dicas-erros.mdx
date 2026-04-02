@@ -1,0 +1,86 @@
+---
+title: Dicas e Erros Comuns
+description:Solução para os problemas mais frequentes no ZapSim
+---
+
+# Dicas e Erros Comuns
+
+## Erros de Conexão Baileys
+
+| Erro | Causa | Solução |
+|------|-------|---------|
+| Canal offline | Celular desconectado | Reconectar manualmente |
+| QR Code não scanning | WhatsApp Web ativo | Fechar WhatsApp Web |
+| Desconexão frequente | Internet instável | Estabilizar internet |
+| Sessão expirada | Celular sem bateria | Manter carregando |
+
+### Checklist de Estabilidade
+
+- ✅ Celular sempre carregando
+- ✅ Internet estável (Wi-Fi ou 4G/5G)
+- ✅ App WhatsApp aberto
+- ✅ Tela não desligando (desativar descanso de tela)
+- ✅ WhatsApp Web/Flow não aberto em outro lugar
+
+## Erros de API
+
+| Erro | Causa | Solução |
+|------|-------|---------|
+| `401 Unauthorized` | Token inválido/expirado | Renovar via painel Admin → API |
+| `404 Not Found` | ApiID incorreto | Verificar ID correto |
+| `ApiID não encontrado` | ID errado | Não confundi com ID do usuário |
+
+## Chatbot Nativo — Armadilhas
+
+| Armadilha | Problema | Solução |
+|-----------|----------|---------|
+| Variáveis não acumulam | Só disponível na etapa anterior | Planejar fluxo accordingly |
+| Tipo que passa controle | Deve ser última da etapa | Mover para final da etapa |
+| Regex tem prioridade | Ignora outras condições | Testar regex separadamente |
+| Fluxo não ativa | Não vinculado ao canal | Vincular em Configurações do Canal |
+
+## Campanhas — Cuidados
+
+| Problema | Solução |
+|----------|---------|
+| Delay em segundos | Converter minutos para segundos (ex: 5 min = 300s) |
+| Mensagem aleatória | Sistema envia só 1 das 3 configuradas |
+| Só dias úteis | Campanhas não disparam em fins de semana |
+| WABA obrigatório para massa | Usar Baileys tem risco de banimento |
+
+## WABA vs Baileys
+
+| Cenário | Recomendação |
+|---------|--------------|
+| Atendimento individual | Baileys ou WABA |
+| Disparo em massa | WABA (obrigatório) |
+| Templates e botões | WABA (obrigatório) |
+| Baixo custo | Baileys |
+| Alta estabilidade | WABA |
+
+## Boas Práticas para LLMs operando via API
+
+1. **Verificar canal:** Sempre verificar status do canal antes de enviar (`showChannel` ou `listChannels`)
+2. **Usar externalKey:** Para rastreabilidade de mensagens
+3. **Verificar contato:** Ao criar ticket, verificar se contato já existe (`showcontact`) antes de criar novo
+4. **Fechar ticket:** Para fechamento, usar `updateticketinfo` com `status: "closed"`
+5. **Presença:** Usar `sendPresence` com `type: "composing"` antes de responder
+6. **Auto-close:** Definir `isClosed: true` no envio para fechar ticket automaticamente
+7. **Paginação:** Usar listagens paginadas (`pageNumber`) para grandes volumes
+
+## Checklist de Segurança
+
+- ✅ Não compartilhe tokens de API
+- ✅ Use HTTPS sempre
+- ✅ Valide webhooks recebidos
+- ✅ Implemente rate limiting
+- ✅ Monitore tentativas de acesso inválido
+
+## Precisa de Ajuda?
+
+- **Suporte:** [suporte@zapsim.com](mailto:suporte@zapsim.com)
+- **Site:** [zapsim.app](https://zapsim.app)
+
+## Próximos Passos
+
+- [Referência Rápida](/referencia/referencia-rapida) — Todos os endpoints

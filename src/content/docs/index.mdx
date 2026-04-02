@@ -1,0 +1,65 @@
+---
+title: Introdução ao ZapSim
+description:Conheça a plataforma ZapSim — atendimento multicanal WhatsApp
+---
+
+# ZapSim — Documentação Completa
+
+**ZapSim** é uma plataforma SaaS de **atendimento multicanal** focada em WhatsApp. Permite gerenciar múltiplos números, criar chatbots, integrar IAs e automatizar atendimentos.
+
+## Recursos Principais
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Multi-Conexão">
+    Conecte múltiplos números WhatsApp via Baileys, WebJS, Evolution API ou WABA Oficial
+  </Card>
+  <Card title="Chatbot Nativo">
+    Crie fluxos de conversa visuais sem necessidade de programação
+  </Card>
+  <Card title="Integração com IA">
+    Conecte ChatGPT, Claude, Gemini, Deepseek e outras IAs ao seu atendimento
+  </Card>
+  <Card title="CRM e Kanban">
+    Gerencie oportunidades e organize atendimentos por filas e departamentos
+  </Card>
+  <Card title="Campanhas">
+    Dispare mensagens em massa com variação de conteúdo e agendamento
+  </Card>
+  <Card title="API REST">
+    Automatize e integre com sistemas externos via API completa
+  </Card>
+</CardGrid>
+
+## Arquitetura
+
+### Perfis de Acesso
+
+| Perfil | Acesso |
+|--------|--------|
+| **SuperAdmin** | Cria e gerencia tenants (empresas), acesso a todos os painéis |
+| **Administrador** | Configura canais, filas, chatbots, campanhas, API do tenant |
+| **Supervisor** | Acesso a campanhas, disparo em massa, relatórios |
+| **Usuário/Agente** | Atende tickets, acessa conversas |
+
+### Conceitos-Chave
+
+- **Tenant:** Uma empresa/conta no sistema. Cada tenant tem seus próprios canais, usuários, API keys.
+- **ApiID:** ID único da API do tenant. Usado em todas as rotas `/v2/api/external/{ApiID}/...`
+- **Bearer Token:** Token JWT de autenticação. Obtido via login na API.
+- **Canal/Conexão:** Um número de WhatsApp conectado. Cada canal tem um ID.
+- **Ticket:** Um atendimento (conversa com um contato). Tem status: `open`, `pending`, `closed`.
+- **Fila:** Departamento/setor para organizar tickets (ex: Suporte, Vendas).
+- **Tag:** Etiqueta aplicável a contatos ou tickets.
+
+## Precisa de Ajuda?
+
+- **Suporte:** [suporte@zapsim.com](mailto:suporte@zapsim.com)
+- **Site:** [zapsim.app](https://zapsim.app)
+
+## Próximos Passos
+
+1. [Primeiro Acesso](/primeiro-acesso) — Configure sua conta
+2. [Autenticação API](/api/autenticacao) — Como autenticar na API
+3. [Enviar Mensagens](/api/mensagens) — Primeiro passo na API

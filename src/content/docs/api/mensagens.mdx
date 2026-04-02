@@ -1,0 +1,99 @@
+---
+title: API — Mensagens
+description:Enviar mensagens de texto, arquivos, áudio e voz via API
+---
+
+# API — Mensagens
+
+## Parâmetros de Envio (GET)
+
+```
+GET /v2/api/external/{ApiID}/params/
+```
+
+Query params disponíveis:
+
+| Parâmetro | Descrição |
+|-----------|-----------|
+| `body` | Texto da mensagem |
+| `number` | Número do destinatário (formato: `5511999999999`) |
+| `externalKey` | Chave única do seu sistema para controle do envio |
+| `bearertoken` | Token de autenticação |
+| `isClosed` | Define se o ticket será fechado após o envio |
+
+## Enviar Mensagem de Texto
+
+```
+POST /v2/api/external/{ApiID}
+```
+
+**Body JSON (exemplo):**
+
+```json
+{
+  "number": "5511999999999",
+  "body": "Olá! Como posso ajudar?",
+  "externalKey": "ref-123"
+}
+```
+
+## Enviar Arquivo via URL
+
+```
+POST /v2/api/external/{ApiID}/url
+```
+
+**Body JSON (exemplo):**
+
+```json
+{
+  "number": "5511999999999",
+  "body": "Segue o documento:",
+  "mediaUrl": "https://exemplo.com/arquivo.pdf",
+  "fileName": "documento.pdf"
+}
+```
+
+## Enviar Mensagem de Voz (Áudio)
+
+```
+POST /v2/api/external/{ApiID}/voice
+```
+
+**Body JSON:**
+
+```json
+{
+  "number": "5511999999999",
+  "mediaUrl": "https://exemplo.com/audio.mp3"
+}
+```
+
+## Enviar Arquivo em Base64
+
+```
+POST /v2/api/external/{ApiID}/base64
+```
+
+**Body JSON:**
+
+```json
+{
+  "number": "5511999999999",
+  "body": "Imagem em base64",
+  "mediaBase64": "data:image/jpeg;base64,/9j/4AAQ...",
+  "fileName": "imagem.jpg"
+}
+```
+
+## Boas Práticas
+
+1. Sempre verificar status do canal antes de enviar (`showChannel` ou `listChannels`)
+2. Usar `externalKey` único por mensagem para rastreabilidade
+3. Usar `sendPresence` com `type: "composing"` antes de responder para parecer mais humano
+4. Definir `isClosed: true` no envio para fechar ticket automaticamente após resposta
+
+## Próximos Passos
+
+- [Mensagens em Grupo](/api/mensagens-grupo) — Envie para grupos
+- [Tickets](/api/tickets) — Gerencie atendimentos

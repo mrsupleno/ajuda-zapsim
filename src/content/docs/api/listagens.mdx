@@ -1,0 +1,64 @@
+---
+title: API — Listagens
+description: Listar tickets, contatos, canais e outros recursos
+---
+
+# API — Listagens
+
+## Listar Tickets
+
+```
+GET /v2/api/external/{ApiID}/listTickets
+```
+
+**Query params:**
+
+| Parâmetro | Descrição |
+|-----------|-----------|
+| `pageNumber` | Número da página |
+| `status` | `open`, `pending`, `closed` |
+| `searchParam` | Busca por texto |
+| `queuesIds` | IDs das filas separados por vírgula |
+
+**Exemplo:**
+
+```
+GET /v2/api/external/{ApiID}/listTickets?status=open&pageNumber=1
+```
+
+## Listar Contatos
+
+```
+GET /v2/api/external/{ApiID}/listContacts?pageNumber=1&searchParam=João
+```
+
+## Listar Filas
+
+```
+GET /v2/api/external/{ApiID}/listQueues
+```
+
+## Listar Tags
+
+```
+GET /v2/api/external/{ApiID}/listTags?isActive=true
+```
+
+## Listar Canais
+
+```
+GET /v2/api/external/{ApiID}/listChannels
+```
+
+## Paginação
+
+Todas as listagens usam paginação:
+
+```http
+GET /v2/api/external/{ApiID}/listTickets?pageNumber=1&pageSize=20
+```
+
+## Próximos Passos
+
+- [Canais e Sessões](/api/canais-sessoes) — Gerenciar conexões
+- [API SuperAdmin](/api/superadmin) — Gerenciar tenants

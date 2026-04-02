@@ -1,0 +1,49 @@
+---
+title: Filas e Organização
+description: Organize atendimentos por filas e departamentos
+---
+
+# Filas e Organização de Atendimento
+
+## O que são Filas?
+
+Filas organizam atendimentos por setor/departamento (ex: Suporte, Vendas, Financeiro).
+
+**Acessar:** Menu lateral → ícone Filas (disponível para Admin e Supervisor)
+
+## Criar Fila
+
+1. Filas → Adicionar
+2. Informar nome do setor/departamento
+3. Salvar
+
+## Usar Filas
+
+- Associar fila padrão a um canal
+- Mover ticket para fila via chatbot
+- Via API: `POST /v2/api/external/{ApiID}/updatequeue`
+
+## Auto Distribuição
+
+Quando ativado no canal, novos tickets são distribuídos automaticamente entre agentes **online** de forma equitativa.
+
+## Status dos Tickets
+
+| Status | Descrição |
+|--------|-----------|
+| `open` | Em atendimento |
+| `pending` | Aguardando resposta do cliente |
+| `closed` | Encerrado |
+
+## Kanban (Oportunidades)
+
+Além das filas de atendimento, o sistema possui um Kanban para gestão de oportunidades de venda.
+
+## Tags
+
+Tags são etiquetas aplicadas a contatos ou tickets para organização adicional.
+
+## Próximos Passos
+
+- [Dicas e Erros Comuns](/referencia/dicas-erros) — Resolva problemas
+- [Referência Rápida](/referencia/referencia-rapida) — Endpoints principais

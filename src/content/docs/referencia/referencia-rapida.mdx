@@ -1,0 +1,72 @@
+---
+title: Referência Rápida
+description: Endpoints mais usados da API ZapSim
+---
+
+# Referência Rápida — Endpoints Mais Usados
+
+## Autenticação
+
+```http
+Authorization: Bearer {seu_token}
+```
+
+## Mensagens
+
+```http
+# Enviar mensagem de texto
+POST /v2/api/external/{ApiID}
+Body: { "number": "55...", "body": "texto" }
+
+# Enviar arquivo
+POST /v2/api/external/{ApiID}/url
+Body: { "number": "55...", "mediaUrl": "https://...", "fileName": "arquivo.pdf" }
+```
+
+## Tickets
+
+```http
+# Criar ticket
+POST /v2/api/external/{ApiID}/createTicket
+Body: { "contactId": N, "queueId": N }
+
+# Fechar ticket
+POST /v2/api/external/{ApiID}/updateticketinfo
+Body: { "ticketId": N, "status": "closed" }
+
+# Listar tickets abertos
+GET /v2/api/external/{ApiID}/listTickets?status=open&pageNumber=1
+```
+
+## Contatos
+
+```http
+# Buscar contato
+POST /v2/api/external/{ApiID}/showcontact
+Body: { "number": "55..." }
+
+# Criar contato
+POST /v2/api/external/{ApiID}/createContact
+Body: { "name": "Nome", "number": "55..." }
+```
+
+## Canais
+
+```http
+# Listar canais
+GET /v2/api/external/{ApiID}/listChannels
+
+# Listar filas
+GET /v2/api/external/{ApiID}/listQueues
+```
+
+## Formato de Número
+
+Sempre use: `DDI + DDD + número`
+
+Exemplo: `5511999999999` (Brasil, DDI=55, DDD=11, número=999999999)
+
+## Precisa de Ajuda?
+
+- **Suporte:** suporte@zapsim.com
+- **Site:** zapsim.app

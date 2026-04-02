@@ -1,0 +1,76 @@
+---
+title: Chatbot Nativo
+description: Crie fluxos de conversa visuais no ZapSim
+---
+
+# Chatbot Nativo — Construtor de Fluxo
+
+## Conceitos Fundamentais
+
+| Elemento | Descrição |
+|----------|-----------|
+| **Fluxo** | Conjunto completo de etapas da automação |
+| **Etapa (Nó)** | Momento específico na conversa |
+| **Interação (Ação)** | O que o chatbot faz nessa etapa |
+| **Condição (Regra)** | O que determina para qual etapa avançar |
+
+## Interações Disponíveis
+
+### Comunicação com o Cliente
+
+- **Enviar Mensagem de Texto** — mensagens sequenciais
+- **Enviar Mídia** — documento, imagem ou arquivo
+- **Agendar Mensagem** — envio futuro
+- **Chamar VAPI** — chamada de voz automatizada com IA
+
+### Controle do Fluxo
+
+- **Delay** — pausa em segundos entre mensagens
+- **Adicionar Novo Fluxo** — transfere para outro fluxo
+- **Bloquear Chatbot** — impede reativação do bot
+
+### Gestão de Dados
+
+- **Adicionar Tag** — aplica etiqueta ao contato
+- **Adicionar Oportunidade** — cria oportunidade no CRM
+- **Adicionar Nota** — nota interna no atendimento
+- **Adicionar Webhook** — envia dados para URL externa
+
+## Condições (Regras de Roteamento)
+
+| Condição | Comportamento |
+|----------|---------------|
+| **Qualquer Resposta** | Avança com qualquer mensagem |
+| **Igual a** | Resposta idêntica à palavra-chave |
+| **Contém** | Resposta contém a palavra-chave |
+| **Regex** | Valida com expressão regular |
+
+## Variáveis
+
+### Usar Variável em Mensagens
+
+```
+Olá, {{nome_cliente}}! Seu pedido foi confirmado.
+```
+
+> ⚠️ Só é possível usar a variável capturada na **etapa imediatamente anterior**.
+
+### Variáveis de Sistema
+
+| Variável | Descrição |
+|----------|-----------|
+| `{{contact.name}}` | Primeiro nome do contato |
+| `{{agent.name}}` | Nome do atendente |
+| `{{ticket.protocol}}` | Número do protocolo |
+
+## Ativar o Fluxo em um Canal
+
+1. Menu → Canais
+2. Localizar o canal desejado
+3. Clicar no ícone de Chatbot
+4. Selecionar o fluxo na lista
+
+## Próximos Passos
+
+- [Integração N8N](/automacoes/n8n) — Automatize com fluxos complexos
+- [Integração IA](/automacoes/ia) — Adicione inteligência artificial

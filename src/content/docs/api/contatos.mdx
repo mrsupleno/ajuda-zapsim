@@ -1,0 +1,81 @@
+---
+title: API — Contatos
+description: Gerenciar contatos no ZapSim via API
+---
+
+# API — Contatos
+
+## Criar Contato
+
+```
+POST /v2/api/external/{ApiID}/createContact
+```
+
+**Body JSON:**
+
+```json
+{
+  "name": "João Silva",
+  "number": "5511999999999",
+  "email": "joao@email.com"
+}
+```
+
+## Buscar Contato
+
+```
+POST /v2/api/external/{ApiID}/showcontact
+```
+
+**Body JSON:**
+
+```json
+{
+  "number": "5511999999999"
+}
+```
+
+## Atualizar Contato
+
+```
+POST /v2/api/external/{ApiID}/updateContact
+```
+
+**Body JSON:**
+
+```json
+{
+  "contactId": 123,
+  "name": "João Silva Atualizado",
+  "email": "novo@email.com"
+}
+```
+
+## Atualizar Informações Extras
+
+```
+POST /v2/api/external/{ApiID}/updateContactExtraInfo
+```
+
+**Body JSON:**
+
+```json
+{
+  "contactId": 123,
+  "extraInfo": {
+    "empresa": "Nome da Empresa",
+    "cargo": "Gerente de Vendas"
+  }
+}
+```
+
+## Boas Práticas
+
+1. Ao receber uma mensagem, buscar contato existente antes de criar novo
+2. Usar `showcontact` para verificar se o contato já existe
+3. Manter o número sempre no formato DDI + DDD + número (ex: `5511999999999`)
+
+## Próximos Passos
+
+- [Usuários](/api/usuarios) — Gerenciar usuários/operadores
+- [Listagens](/api/listagens) — Listar recursos

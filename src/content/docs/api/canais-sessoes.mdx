@@ -1,0 +1,81 @@
+---
+title: API — Canais e Sessões
+description: Gerenciar canais e sessões WhatsApp via API
+---
+
+# API — Canais e Sessões
+
+## Informações do Canal (por ID)
+
+```
+POST /v2/api/external/{ApiID}/showChannelById
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappId": 1
+}
+```
+
+## Listar Grupos do Canal
+
+```
+POST /v2/api/external/{ApiID}/listGroupInfo
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappId": 1
+}
+```
+
+## Criar Sessão
+
+```
+POST /v2/api/external/{ApiID}/createtSession
+```
+
+**Body JSON:**
+
+```json
+{
+  "name": "Novo Canal",
+  "type": "baileys"
+}
+```
+
+**Tipos disponíveis:** `baileys`, `webjs`, `meow`, `evolution`, `waba`
+
+## Obter QR Code
+
+```
+POST /v2/api/external/{ApiID}/qrCodeSession
+```
+
+**Body JSON:**
+
+```json
+{
+  "whatsappId": 3
+}
+```
+
+> Retorna o QR Code em base64 para conexão do WhatsApp.
+
+## Status do Canal
+
+| Status | Significado |
+|--------|-------------|
+| `open` | Canal conectado e ativo |
+| `close` | Canal desconectado |
+| `qrcode` | QR Code disponível para conexão |
+| `connecting` | Tentando conectar |
+
+## Próximos Passos
+
+- [Conexão WhatsApp](/canais/conexao-whatsapp) — Guia completo
+- [API SuperAdmin](/api/superadmin) — Gerenciar múltiplos tenants

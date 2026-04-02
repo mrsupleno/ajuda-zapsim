@@ -1,0 +1,65 @@
+---
+title: API — SuperAdmin
+description: Gerenciar tenants e configurações globais via API SuperAdmin
+---
+
+# API — SuperAdmin (Tenant Management)
+
+> ⚠️ Estas rotas são da API do **SuperAdmin** e usam autenticação diferente (token superadmin).
+
+## Base URL — SuperAdmin
+
+```
+https://{seu_backend}/v2/api/superadmin/
+```
+
+## Criar Tenant
+
+```
+POST /tenantApiStoreTenant
+```
+
+**Body JSON:**
+
+```json
+{
+  "name": "Empresa Cliente",
+  "email": "admin@empresa.com",
+  "password": "senha123",
+  "plan": "basic"
+}
+```
+
+**Planos disponíveis:** `basic`, `professional`, `enterprise`
+
+## Buscar Tenant
+
+```
+POST /tenantApiShowTenant
+```
+
+**Body JSON:**
+
+```json
+{
+  "tenantId": 10
+}
+```
+
+## Listar Tenants
+
+```
+GET /tenantApiListTenants
+```
+
+## Autenticação SuperAdmin
+
+O token SuperAdmin é diferente do token de tenant. Obtido no painel SuperAdmin.
+
+```http
+Authorization: Bearer {superadmin_token}
+```
+
+## Próximos Passos
+
+- [Automações](/automacoes/chatbot) — Configure chatbots e IAs

@@ -1,0 +1,43 @@
+---
+title: Conexão WhatsApp
+description: Tipos de canal e como conectar seu WhatsApp ao ZapSim
+---
+
+# Conexão WhatsApp
+
+## Tipos de Canal Disponíveis
+
+| Tipo | Descrição | Estabilidade |
+|------|-----------|--------------|
+| **Baileys (QR Code)** | Conexão via biblioteca Baileys, escanear QR | Boa, depende do smartphone |
+| **WebJS** | Conexão via WhatsApp Web JS | Similar ao Baileys |
+| **Evolution API** | Integração com Evolution API externa | Alta |
+| **WhatsApp Oficial (WABA)** | API Cloud Meta, números certificados | Máxima |
+
+## Como Conectar — Baileys (QR Code)
+
+**Pré-requisitos:**
+- Remover conexão ativa no WhatsApp Web antes
+- Manter celular ligado, conectado à internet
+- Desativar descanso de tela no celular
+
+**Passos:**
+1. Painel Admin → Canais → Adicionar Canal
+2. Selecionar tipo: `Baileys`
+3. Preencher Nome do Canal
+4. Salvar → Clicar em "Novo QR Code"
+5. Escanear QR Code com o WhatsApp
+
+## Comparativo: Baileys vs WABA
+
+| | Baileys | WABA (Oficial) |
+|---|---------|----------------|
+| Aprovação Meta | Não | Necessário |
+| Templates | Não | Sim |
+| Risco de banimento | Médio | Baixo |
+| Custo | Grátis | Por mensagem |
+
+## Próximos Passos
+
+- [Chatbot Nativo](/automacoes/chatbot) — Crie fluxos de atendimento
+- [Integração IA](/automacoes/ia) — Configure inteligência artificial

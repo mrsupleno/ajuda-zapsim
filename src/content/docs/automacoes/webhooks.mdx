@@ -1,0 +1,66 @@
+---
+title: Webhooks
+description: Configure webhooks para receber notificações em tempo real
+---
+
+# Webhooks
+
+## Habilitar Webhooks
+
+**Painel Admin → Configurações → Integrações → Habilitar Webhooks**
+
+### Eventos Disponíveis
+
+| Evento | Descrição |
+|--------|-----------|
+| **Receber mensagens e atendimentos** | Ao receber/enviar mensagens e abrir/fechar tickets |
+| **Criar/atualizar canal** | Ao criar ou atualizar canal |
+| **Criar/atualizar usuário** | Ao criar ou atualizar usuário |
+| **Renovar token da API** | Ao renovar token |
+
+## Payload de Webhook — Mensagem Recebida
+
+```json
+{
+  "event": "onmessage",
+  "instanceName": "canal-principal",
+  "data": {
+    "ticket": {
+      "id": 456,
+      "status": "open",
+      "queueId": 1
+    },
+    "contact": {
+      "id": 123,
+      "name": "João Silva",
+      "number": "5511999999999"
+    },
+    "message": {
+      "body": "Olá, preciso de ajuda",
+      "mediaType": "chat"
+    }
+  }
+}
+```
+
+## Webhook dentro do Chatbot
+
+Na interação "Adicionar Webhook" de uma etapa:
+
+| Campo | Descrição |
+|-------|-----------|
+| **Método** | GET, POST, PUT ou DELETE |
+| **URL** | Endpoint externo |
+| **Headers** | Personalizados |
+| **Body** | JSON com variáveis do fluxo |
+
+## Boas Práticas
+
+1. **Responda rapidamente:** Retorne 200 OK imediatamente
+2. **Verifique autenticidade:** Use token/secret para validar
+3. **Logs:** Mantenha logs de todos os webhooks
+
+## Próximos Passos
+
+- [Campanhas](/operacoes/campanhas) — Disparos em massa
+- [Filas e Organização](/operacoes/filas) — Organize atendimentos

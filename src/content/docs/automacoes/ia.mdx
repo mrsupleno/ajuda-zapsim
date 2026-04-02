@@ -1,0 +1,51 @@
+---
+title: Integração IA
+description: Configure ChatGPT, Claude, Gemini e outras IAs no ZapSim
+---
+
+# Integração com Inteligência Artificial
+
+## ChatGPT (OpenAI)
+
+### Habilitar ChatGPT
+
+**Passo 1 — Ativar globalmente:**
+1. Configurações → Bots e IA → Chat GPT
+2. Ativar "Ativar integração com ChatGPT"
+
+**Passo 2 — Configurar em um Canal:**
+1. Canais → Editar canal desejado
+2. Preencher na aba ChatGPT:
+   - `ChatGPT API Key` — chave da OpenAI
+
+**Passo 3 — Definir comportamento:**
+
+Opção A — **Prompt direto no ZapSim:**
+- Campo `Prompt ChatGPT`: instrução de comportamento
+
+Opção B — **Assistant ID da OpenAI:**
+- Campo `AssistantId ChatGPT`: ID de um Assistant criado no Playground
+
+## Configurações Adicionais
+
+| Campo | Descrição |
+|-------|-----------|
+| `Palavra para desligar ChatGPT` | Ex: "falar com atendente" |
+| `ChatGPT Model` | Modelo LLM (ex: gpt-4o, gpt-4) |
+| `Ativar Respostas de Voz` | Bot responde com áudios |
+
+## Outras IAs Suportadas
+
+| IA | Configuração |
+|----|-------------|
+| **Claude (Anthropic)** | API Key da Anthropic |
+| **Gemini (Google)** | API Key do Google AI |
+| **Deepseek** | API Key do Deepseek |
+| **Grok (xAI)** | API Key do xAI |
+| **Ollama (self-hosted)** | URL do servidor local |
+| **LM Studio (self-hosted)** | URL do servidor local |
+
+## Próximos Passos
+
+- [Webhooks](/automacoes/webhooks) — Configure notificações
+- [Campanhas](/operacoes/campanhas) — Disparos em massa

@@ -1,0 +1,54 @@
+---
+title: API — Oportunidades
+description: Gerenciar pipeline de vendas e oportunidades via API
+---
+
+# API — Oportunidades
+
+## Criar Oportunidade
+
+```
+POST /v2/api/external/{ApiID}/createOpportunity
+```
+
+**Body JSON:**
+
+```json
+{
+  "contactId": 123,
+  "title": "Proposta Plano Premium",
+  "value": 500.00,
+  "pipelineId": 1,
+  "stageId": 2,
+  "userId": 5
+}
+```
+
+## Atualizar Oportunidade
+
+```
+POST /v2/api/external/{ApiID}/updateOpportunity
+```
+
+**Body JSON:**
+
+```json
+{
+  "opportunityId": 45,
+  "stageId": 3,
+  "value": 750.00
+}
+```
+
+## Kanban e Pipeline
+
+O sistema de oportunidades funciona com um pipeline de vendas no formato Kanban:
+
+1. **Pipeline:** Funil de vendas completo
+2. **Stages:** Etapas do funil (ex: Qualificação, Proposta, Fechado)
+3. **Cards:** Oportunidades individuais
+
+## Próximos Passos
+
+- [Listagens](/api/listagens) — Listar oportunidades
+- [Campanhas](/operacoes/campanhas) — Disparar ações de marketing

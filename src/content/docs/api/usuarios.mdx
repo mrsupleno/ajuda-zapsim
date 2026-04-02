@@ -1,0 +1,48 @@
+---
+title: API — Usuários
+description: Gerenciar usuários e operadores no ZapSim via API
+---
+
+# API — Usuários
+
+## Criar Usuário
+
+```
+POST /v2/api/external/{ApiID}/createUser
+```
+
+**Body JSON:**
+
+```json
+{
+  "name": "Maria Operadora",
+  "email": "maria@empresa.com",
+  "password": "senha123",
+  "profile": "user"
+}
+```
+
+### Perfis Disponíveis
+
+| Perfil | Descrição |
+|--------|-----------|
+| `admin` | Administrador — acesso completo |
+| `supervisor` | Supervisor — campanhas e relatórios |
+| `user` | Usuário/Agente — atendimento |
+
+## Listar Usuários
+
+```
+GET /v2/api/external/{ApiID}/listUsers?pageNumber=1&searchParam=Maria
+```
+
+## Status do Usuário
+
+```
+GET /v2/api/external/{ApiID}/getUserStatus?userId=3
+```
+
+## Próximos Passos
+
+- [Oportunidades](/api/oportunidades) — Gerenciar pipeline de vendas
+- [Canais e Sessões](/api/canais-sessoes) — Gerenciar conexões WhatsApp

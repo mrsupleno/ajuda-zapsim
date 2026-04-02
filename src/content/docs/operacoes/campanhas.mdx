@@ -1,0 +1,59 @@
+---
+title: Campanhas e Disparo em Massa
+description: Configure campanhas e disparos de mensagens em massa
+---
+
+# Campanhas e Disparo em Massa
+
+## Diferença entre Campanha e Disparo em Massa
+
+| Característica | Campanha | Disparo em Massa |
+|----------------|----------|------------------|
+| **Intervalo** | Fixo (definido pelo usuário) | Aleatório |
+| **Variação de mensagens** | Até 3 mensagens aleatórias | 1 mensagem por vez |
+| **Templates WABA** | ✅ Suportado | ✅ Suportado |
+| **Agendamento** | ✅ Data/hora específica | ✅ Imediato |
+
+## Gestão de Campanha
+
+**Acessar:** Menu lateral → ícone Campanha
+
+### Criar Campanha
+
+| Campo | Descrição |
+|-------|-----------|
+| **Nome da Campanha** | Identificação interna |
+| **Data/Hora Início** | Quando a campanha começa |
+| **Enviar por** | Canal responsável pelo envio |
+| **Delay** | Tempo em **segundos** entre envios |
+| **1ª, 2ª e 3ª Mensagem** | Variações — sistema envia **uma aleatoriamente** |
+
+> ⚠️ Disparos apenas em dias úteis e horário comercial.
+
+## Disparo em Massa
+
+**Acessar:** Menu lateral → ícone Disparo em Massa
+
+- Disparo imediato com intervalo **aleatório**
+- Opções:
+  - **API Não Oficial** — mensagem livre com variáveis
+  - **API Oficial (WABA)** — templates pré-aprovados
+
+## Variáveis nas Mensagens
+
+| Variável | Descrição |
+|----------|-----------|
+| `{{nome}}` | Nome do contato |
+| `{{numero}}` | Número do contato |
+| `{{data}}` | Data atual |
+
+## Cuidados Importantes
+
+- ⚠️ Delay é em **segundos**, não minutos
+- ⚠️ Sistema envia apenas **uma** das mensagens configuradas
+- ⚠️ Para WABA use **Disparo em Massa**, não Campanha
+
+## Próximos Passos
+
+- [Filas e Organização](/operacoes/filas) — Organize atendimento
+- [Referência Rápida](/referencia/referencia-rapida) — Endpoints principais

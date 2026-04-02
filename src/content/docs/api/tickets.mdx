@@ -1,0 +1,97 @@
+---
+title: API — Tickets
+description: Gerenciar tickets de atendimento via API
+---
+
+# API — Tickets
+
+## Criar Ticket
+
+```
+POST /v2/api/external/{ApiID}/createTicket
+```
+
+**Body JSON:**
+
+```json
+{
+  "contactId": 123,
+  "queueId": 1,
+  "userId": 5,
+  "status": "open"
+}
+```
+
+## Atualizar Informações do Ticket
+
+```
+POST /v2/api/external/{ApiID}/updateticketinfo
+```
+
+**Body JSON (campos possíveis):**
+
+```json
+{
+  "ticketId": 456,
+  "status": "closed",
+  "userId": 3,
+  "queueId": 1
+}
+```
+
+**Status disponíveis:** `open`, `pending`, `closed`
+
+## Buscar Informações do Ticket
+
+```
+POST /v2/api/external/{ApiID}/showticket
+```
+
+**Body JSON:**
+
+```json
+{
+  "ticketId": 456
+}
+```
+
+## Criar Nota Interna
+
+```
+POST /v2/api/external/{ApiID}/createNotes
+```
+
+**Body JSON:**
+
+```json
+{
+  "ticketId": 456,
+  "note": "Cliente solicitou retorno até sexta-feira"
+}
+```
+
+## Enviar Presença (digitando...)
+
+```
+POST /v2/api/external/{ApiID}/sendPresence
+```
+
+**Body JSON:**
+
+```json
+{
+  "ticketId": 456,
+  "type": "composing"
+}
+```
+
+| Type | Descrição |
+|------|-----------|
+| `composing` | Digitando |
+| `recording` | Gravando áudio |
+| `paused` | Parou |
+
+## Próximos Passos
+
+- [Contatos](/api/contatos) — Gerenciar contatos
+- [Filas](/operacoes/filas) — Organizar atendimento

@@ -1,0 +1,48 @@
+---
+title: Dicas e Erros Comuns
+description: Solução para os problemas mais frequentes no ZapSim
+---
+
+# Dicas e Erros Comuns
+
+## Erros de Conexão Baileys
+
+| Erro | Causa | Solução |
+|------|-------|---------|
+| Canal offline | Celular desconectado | Reconectar manualmente |
+| QR Code não scanning | WhatsApp Web ativo | Fechar WhatsApp Web |
+| Desconexão frequente | Internet instável | Estabilizar internet |
+
+### Checklist de Estabilidade
+
+- ✅ Celular sempre carregando
+- ✅ Internet estável
+- ✅ App WhatsApp aberto
+- ✅ Tela não desligando
+
+## Erros de API
+
+| Erro | Causa | Solução |
+|------|-------|---------|
+| `401 Unauthorized` | Token inválido | Renovar via painel Admin → API |
+| `404 Not Found` | ApiID incorreto | Verificar ID correto |
+
+## Chatbot Nativo — Armadilhas
+
+| Armadilha | Problema | Solução |
+|-----------|----------|---------|
+| Variáveis não acumulam | Só disponível na etapa anterior | Planejar fluxo |
+| Tipo que passa controle | Deve ser última da etapa | Mover para final |
+
+## Boas Práticas para API
+
+1. Verificar status do canal antes de enviar
+2. Usar `externalKey` único por mensagem
+3. Verificar se contato existe antes de criar
+4. Usar `sendPresence` antes de responder
+5. Definir `isClosed: true` para fechar após resposta
+
+## Precisa de Ajuda?
+
+- **Suporte:** suporte@zapsim.com
+- **Site:** zapsim.app

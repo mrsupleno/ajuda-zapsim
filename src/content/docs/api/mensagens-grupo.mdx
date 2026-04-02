@@ -1,6 +1,6 @@
 ---
 title: API — Mensagens em Grupo
-description:Enviar mensagens para grupos de WhatsApp via API
+description: Enviar mensagens para grupos de WhatsApp via API
 ---
 
 # API — Mensagens em Grupo
@@ -40,7 +40,6 @@ POST /v2/api/external/{ApiID}/groupMediaUrl
 
 O `groupId` segue o formato `XXXXXXXXXX@g.us`. Para obtê-lo:
 
-1. Liste os grupos do canal:
 ```
 POST /v2/api/external/{ApiID}/listGroupInfo
 ```
@@ -50,21 +49,6 @@ POST /v2/api/external/{ApiID}/listGroupInfo
 ```json
 {
   "whatsappId": 1
-}
-```
-
-2. Na resposta, cada grupo terá um campo `jid` ou `groupId` com o formato correto.
-
-## Exemplo Completo
-
-```http
-POST https://seu-backend.com/v2/api/external/abc123/group
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "groupId": "123456789-987654321@g.us",
-  "body": "Olá! Esta é uma mensagem para o grupo."
 }
 ```
 

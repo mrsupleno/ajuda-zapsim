@@ -15,8 +15,7 @@ export default defineConfig({
           label: 'Início',
           items: [
             { label: 'Bem-vindo', link: '/' },
-            { label: 'O que é o ZapSim', link: '/introducao/o-que-e' },
-            { label: 'Primeiro Acesso', link: '/introducao/primeiro-acesso' },
+            { label: 'Primeiro Acesso', link: '/primeiro-acesso' },
           ],
         },
         {
@@ -26,14 +25,39 @@ export default defineConfig({
             { label: 'Enviar Mensagens', link: '/api/mensagens' },
             { label: 'Gerenciar Tickets', link: '/api/tickets' },
             { label: 'Contatos', link: '/api/contatos' },
-            { label: 'Referência Completa', link: '/api/referencia' },
+            { label: 'Canais e Sessões', link: '/api/canais-sessoes' },
+            { label: 'Usuários', link: '/api/usuarios' },
+            { label: 'WABA Interativo', link: '/api/waba-interativo' },
+            { label: 'Templates WABA', link: '/api/templates-waba' },
           ],
         },
         {
-          label: 'Suporte',
+          label: 'Automações',
           items: [
-            { label: 'Contato', link: '/suporte/contato' },
-            { label: 'FAQ', link: '/suporte/faq' },
+            { label: 'Chatbot', link: '/automacoes/chatbot' },
+            { label: 'Integração IA', link: '/automacoes/ia' },
+            { label: 'Webhooks', link: '/automacoes/webhooks' },
+            { label: 'Integração n8n', link: '/automacoes/n8n' },
+          ],
+        },
+        {
+          label: 'Operações',
+          items: [
+            { label: 'Campanhas', link: '/operacoes/campanhas' },
+            { label: 'Filas', link: '/operacoes/filas' },
+          ],
+        },
+        {
+          label: 'Canais',
+          items: [
+            { label: 'Conexão WhatsApp', link: '/canais/conexao-whatsapp' },
+          ],
+        },
+        {
+          label: 'Referência',
+          items: [
+            { label: 'Referência Rápida', link: '/referencia/referencia-rapida' },
+            { label: 'Dicas e Erros', link: '/referencia/dicas-erros' },
           ],
         },
       ],
